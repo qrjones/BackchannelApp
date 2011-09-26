@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  post_id: 1
+  num_of_votes: 1
+  user_name: MyString
+
+two:
+  post_id: 1
+  num_of_votes: 1
+  user_name: MyString
