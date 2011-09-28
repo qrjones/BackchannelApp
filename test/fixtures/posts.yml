@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
 
 one:
-  post_id: 1
-  post_text: MyText
+  originator: 
+  weight: 
+  initialPostDate: 2011-09-27 20:58:02
+  answered: false
 
 two:
-  post_id: 1
-  post_text: MyText
+  originator: 
+  weight: 
+  initialPostDate: 2011-09-27 20:58:02
+  answered: false
