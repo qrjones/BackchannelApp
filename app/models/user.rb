@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-   validates :user_name, :presence => true
-   validates :user_password, :presence => true,
-                             :length => { :minimum => 6}
+  has_many :votes
+  has_many :replies
+  has_many :posts
 end

@@ -11,28 +11,34 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110924194136) do
+ActiveRecord::Schema.define(:version => 20110928041116) do
 
   create_table "posts", :force => true do |t|
-    t.integer  "post_id"
-    t.text     "post_text"
+    t.integer  "weight"
+    t.datetime "initialPostDate"
+    t.boolean  "answered"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "replies", :force => true do |t|
+    t.text     "replyText"
+    t.datetime "replyTime"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "user_name"
-    t.string   "user_email"
-    t.string   "user_password"
+    t.string   "username"
+    t.string   "password"
+    t.string   "email"
     t.integer  "role"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "votes", :force => true do |t|
-    t.integer  "post_id"
-    t.integer  "num_of_votes"
-    t.string   "user_name"
+    t.integer  "voteType"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
