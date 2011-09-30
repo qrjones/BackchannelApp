@@ -1,25 +1,23 @@
-<h1>Listing posts</h1>
+<%= link_to "Post a new question now", '/posts/new' ,{:class => 'post'}   %>
+
+<center><h1>TOP questions</h1>
 
 <table>
   <tr>
+  	<th>Vote</th>
     <th>Post</th>
-    <th>Post text</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Admin Exclusive</th>
   </tr>
 
 <% @posts.each do |post| %>
   <tr>
-    <td><%= post.post_id %></td>
-    <td><%= post.post_text %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>
+  	<td><%= link_to 'Vote', '/' %></td>
+    <td><%= link_to post.post_text, post %></td>
+    <td><%= link_to 'Delete', post, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
-
+</center>
 <br />
 
-<%= link_to 'New Post', new_post_path %>
+

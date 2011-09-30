@@ -14,24 +14,16 @@
 ActiveRecord::Schema.define(:version => 20110928041116) do
 
   create_table "posts", :force => true do |t|
-    t.integer  "weight"
-    t.datetime "initialPostDate"
-    t.boolean  "answered"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "replies", :force => true do |t|
-    t.text     "replyText"
-    t.datetime "replyTime"
+    t.integer  "post_id"
+    t.text     "post_text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "username"
-    t.string   "password"
-    t.string   "email"
+    t.string   "user_name"
+    t.string   "user_email"
+    t.string   "user_password"
     t.integer  "role"
     t.datetime "created_at"
     t.datetime "updated_at"
