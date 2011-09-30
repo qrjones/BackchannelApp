@@ -1,4 +1,6 @@
 BackChannelApp2::Application.routes.draw do
+  resources :posts
+
   resources :replies
 
   resources :add_title_to_posts
