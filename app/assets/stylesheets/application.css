@@ -5,3 +5,81 @@
  *= require_self
  *= require_tree . 
 */
+
+body
+{
+background-color:#b0c4de;
+color: #43f;
+font-family:"Times New Roman", Times, serif;
+}
+#login
+{
+	text-align: right;
+	color:blue;
+}
+ul.circle {list-style-type:circle;}
+ul.square {list-style-type:square;}
+ul
+{
+list-style-image: url("download an image");	
+}
+image
+{
+	height=100px;
+	width=200px;
+}
+em.top{
+	position:absolute;
+	right: 40em;
+	top:2em;
+}
+a.post
+{
+	font-size:20px;
+	color: red;
+}
+em.topright {
+			position: absolute;
+			top: 2em;
+			right: 2em;
+			padding: 0 1em;
+			background: white;
+			color: white;
+			font-weight: bold;
+}
+/*
+a.homebutton{
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center;
+  width: 190px;
+  color: #fff;
+  background: #006400;
+  font-size: 150%;
+  font-weight: bold;
+  padding: 20px;
+}
+*/
+a:link {color:#0000ff;}    /* unvisited link */
+a:visited {color:#00005f;} /* visited link */
+a:hover {color:#ff0000;}   /* mouse over link */
+a:active {color:#00F000;}  /* selected link */
+h1
+{
+	color:blue;
+}
+p
+{
+	font-family:"Times New Roman";
+	font-size:14px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+

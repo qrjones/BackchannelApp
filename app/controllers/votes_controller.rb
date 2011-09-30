@@ -23,7 +23,7 @@ class VotesController < ApplicationController
 
   # GET /votes/new
   # GET /votes/new.json
-  def new
+  def new postid 
     @vote = Vote.new
 
     respond_to do |format|
