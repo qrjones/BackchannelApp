@@ -24,10 +24,17 @@ class RepliesController < ApplicationController
   # GET /replies/new
   # GET /replies/new.json
   def new
-    @reply = Reply.new
-
+    begin
+      @post = Post.find(params[:post_id])
+    rescue ActiveRecord::RecordNotFound
+      logger.error "Accessed invalid post #{params[:post_id]}"
+      redirect_to posts_path, :notice => 'Invalid post id'
+    else
+      @reply = @post.replies.build
+    end
+    @post.save
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { redirect_to edit_reply_path(@reply), notice: @post.title }
       format.json { render json: @reply }
     end
   end
@@ -57,10 +64,11 @@ class RepliesController < ApplicationController
   # PUT /replies/1.json
   def update
     @reply = Reply.find(params[:id])
+    @post = @reply.post
 
     respond_to do |format|
       if @reply.update_attributes(params[:reply])
-        format.html { redirect_to @reply, notice: 'Reply was successfully updated.' }
+        format.html { redirect_to @post , notice: 'Reply added' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -74,9 +82,10 @@ class RepliesController < ApplicationController
   def destroy
     @reply = Reply.find(params[:id])
     @reply.destroy
+    @post = @reply.post
 
     respond_to do |format|
-      format.html { redirect_to replies_url }
+      format.html { redirect_to @post }
       format.json { head :ok }
     end
   end
