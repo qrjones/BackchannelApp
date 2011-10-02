@@ -24,10 +24,17 @@ class VotesController < ApplicationController
   # GET /votes/new
   # GET /votes/new.json
   def new
-    @vote = Vote.new
-
+    begin
+      @reply = Reply.find(params[:reply_id])
+    rescue ActiveRecord::RecordNotFound
+      logger.error "Accessed invalid post #{params[:reply_id]}"
+      redirect_to posts_path, :notice => 'Invalid reply id'
+    else
+        @vote = @reply.votes.build
+    end
+    @reply.save
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { redirect_to @reply.post, notice: 'Vote was successfully created.' }
       format.json { render json: @vote }
     end
   end

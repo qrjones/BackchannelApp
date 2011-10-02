@@ -1,16 +1,24 @@
 <p id="notice"><%= notice %></p>
 
+  <h2><%= @post.title%></h2>
 <p>
-  <b>Post:</b>
-  <%= @post.title%>
+
+  <br>
   <% @post.replies.each do |reply|  %>
       <tr>
         <td><%= reply.replyText %></td>
+        <td><%= link_to 'Show', reply%> </td>
+        <td><%= link_to 'Edit', edit_reply_path(reply) %> </td>
+        <td><%= link_to 'Vote', new_vote_path(:reply_id=>reply.id) %></td>
+        <td><%= link_to 'Destroy', reply, :confirm => 'Are you sure?', method: :delete  %>   </td>
+        <td><%= reply.votes.count %></td>
+       </tr>
+       <br>
   <% end  %>
 
 </p>
 
 
-
+<%= link_to 'New reply', new_reply_path(:post_id=>@post.id) %> |
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>

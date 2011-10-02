@@ -31,6 +31,7 @@ class RepliesController < ApplicationController
       redirect_to posts_path, :notice => 'Invalid post id'
     else
       @reply = @post.replies.build
+
     end
     @post.save
     respond_to do |format|
