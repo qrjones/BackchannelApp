@@ -1,6 +1,12 @@
 <center>
   <h1>TOP questions</h1>
-
+  <p id="notice"><%= notice %></p>
+  <% @user = User.find(session[:user_id])%>
+    <% if @user %>
+      <p><%= @user.username%> </p>
+    <% else %>
+      <p>anonymous</p>
+    <% end %>
 <table>
 
 <% @posts.each do |post| %>
@@ -18,3 +24,5 @@
 <br />
 
 <%= link_to 'New Post', new_post_path %>
+<%= link_to 'Users', users_path %>
+<%= link_to 'Login', new_session_path %>

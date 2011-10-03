@@ -26,12 +26,13 @@ class RepliesController < ApplicationController
   def new
     begin
       @post = Post.find(params[:post_id])
+      @user = current_user
     rescue ActiveRecord::RecordNotFound
       logger.error "Accessed invalid post #{params[:post_id]}"
       redirect_to posts_path, :notice => 'Invalid post id'
     else
-      @reply = @post.replies.build
-
+      # @reply = @post.replies.build
+       @reply = @user.replies.build
     end
     @post.save
     respond_to do |format|
