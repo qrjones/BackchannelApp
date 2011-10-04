@@ -1,7 +1,9 @@
 <center>
   <h1>TOP questions</h1>
   <p id="notice"><%= notice %></p>
-  <% @user = User.find(session[:user_id])%>
+    <%if (session[:user_id]) %>
+        <% @user =  User.find(session[:user_id])%>
+    <% end %>
     <% if @user %>
       <p><%= @user.username%> </p>
     <% else %>
@@ -25,4 +27,8 @@
 
 <%= link_to 'New Post', new_post_path %>
 <%= link_to 'Users', users_path %>
-<%= link_to 'Login', new_session_path %>
+<% if @user %>
+    <%= link_to 'Logout', logout_path, method: :delete%>
+<%else%>
+    <%= link_to 'Login', new_session_path %>
+<% end %>

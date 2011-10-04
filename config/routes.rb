@@ -1,19 +1,20 @@
 BackChannelApp2::Application.routes.draw do
-  resources :posts
 
-  resources :replies
 
-  resources :add_title_to_posts
+  controller :sessions do
+      get 'login' => :new
+      post 'login' => :create
+      delete 'logout' => :destroy
+  end
 
-  resources :votes
 
-  resources :replies
+    resources :sessions
+    resources :posts
+    resources :replies
+    resources :votes
+    resources :users
 
-  resources :users
 
-  resources :votes
-
-  resources :posts
 
   #get "home/index"
 
@@ -73,4 +74,6 @@ BackChannelApp2::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
+
+
 end

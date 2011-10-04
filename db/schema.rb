@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110930031618) do
+ActiveRecord::Schema.define(:version => 20111002220226) do
 
   create_table "posts", :force => true do |t|
     t.integer  "weight"

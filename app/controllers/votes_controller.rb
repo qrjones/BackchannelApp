@@ -31,9 +31,9 @@ class VotesController < ApplicationController
       logger.error "Accessed invalid post #{params[:reply_id]}"
       redirect_to posts_path, :notice => 'Invalid reply id'
     else
-        # @vote = @reply.votes.build
+        @vote = @reply.votes.build
+        @vote.user_id = @user.id
 
-        @vote = @user.replies.build
     end
     @reply.save
     respond_to do |format|
