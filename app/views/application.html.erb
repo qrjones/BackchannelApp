@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Really Cool BackChannel Application</title>
+    <%= stylesheet_link_tag "scaffold" %>
+    <%= javascript_include_tag :defaults %>
+    <%= csrf_meta_tag %>
+</head>
+<body>
+    <div id="banner">
+         <%= image_tag("logo.png") %>
+         <%= "BackChannel" %>
+    </div>
+    <div id="columns">
+      <div id="side">
+        <a href="http://localhost:3000/">Home</a> <br/>
+      </div>
+      <div id = "main">
+        <%= yield %>
+      </div>
+    </div>
+</body>
+</html>
+

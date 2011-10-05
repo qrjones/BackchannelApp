@@ -1,15 +1,24 @@
 <center>
+  <%if (session[:user_id]) %>
+     <% @user =  User.find(session[:user_id])%>
+  <% end %>
   <h1>TOP questions</h1>
   <p id="notice"><%= notice %></p>
 
 <table>
 
 <% @posts.each do |post| %>
-  <tr>
+  <tr class title="<%= cycle('list_line_odd','list_line_even') %>">
     <td><%= post.title %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>
+    <td class="list_actions">
+        <%= link_to 'Show', post %><br/>
+        <% if @user %>
+          <% if @user.role == 2 %>
+            <%= link_to 'Edit', edit_post_path(post) %><br/>
+            <%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %><br/>
+          <% end %>
+        <% end %>
+    </td>
   </tr>
 
 <% end %>
@@ -18,5 +27,6 @@
 </center>
 <br />
 
-<%= link_to 'New Post', new_post_path %>
-
+<% if @user %>
+    <%= link_to 'New Post', new_post_path %>
+<% end  %>

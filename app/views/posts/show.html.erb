@@ -1,24 +1,36 @@
+<center>
 <p id="notice"><%= notice %></p>
 
+  <%if (session[:user_id]) %>
+     <% @user =  User.find(session[:user_id])%>
+  <% end %>
   <h2><%= @post.title%></h2>
-<p>
 
-  <br>
+  <table>
   <% @post.replies.each do |reply|  %>
-      <tr>
+      <tr class title="<%= cycle('list_line_odd','list_line_even') %>">
         <td><%= reply.replyText %></td>
-        <td><%= link_to 'Show', reply%> </td>
-        <td><%= link_to 'Edit', edit_reply_path(reply) %> </td>
-        <td><%= link_to 'Vote', new_vote_path(:reply_id=>reply.id) %></td>
-        <td><%= link_to 'Destroy', reply, :confirm => 'Are you sure?', method: :delete  %>   </td>
+        <td class="list_actions">
+          <% if @user %>
+            <% if @user.role == 2 %>
+                <%= link_to 'Edit', edit_reply_path(reply) %> <br/>
+                <%= link_to 'Destroy', reply, :confirm => 'Are you sure?', method: :delete  %> <br/>
+            <% end %>
+            <%= link_to 'Vote', new_vote_path(:reply_id=>reply.id) %><br/>
+          <%end%>
+        </td>
         <td><%= reply.votes.count %></td>
-       </tr>
+      </tr>
        <br>
   <% end  %>
 
-</p>
+  </table>
+</center>
 
-
-<%= link_to 'New reply', new_reply_path(:post_id=>@post.id) %> |
-<%= link_to 'Edit', edit_post_path(@post) %> |
+<% if @user %>
+    <%= link_to 'New reply', new_reply_path(:post_id=>@post.id) %> |
+        <% if @user.role == 2 %>
+            <%= link_to 'Edit', edit_post_path(@post) %> |
+        <% end %>
+<% end %>
 <%= link_to 'Back', posts_path %>
