@@ -2,13 +2,29 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+      @posts = Post.all(:order => 'weight DESC' , :limit => '5')  #,:limit => 20
+      # @replies = Reply.all(:order => 'numvotes DESC')
+      @currentuser = 0
+      if params[:search]
+          @posts = Post.search(params[:search])
+          #if @searchreplies.nil? == false
+          #@searchreplies.each { |sr|  var = Post.all(:conditions =>{ :id => sr.post_id })
+           #if var.nil? == false
+            #    @posts << var
+           #end
+           #}
+       end
+      #else
+      #@posts.each {|post|
+        #  @replies[post.id] = post.replies.find( :conditions => {:post_id => post.id}   )
+       # }
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @posts }
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @posts }
+      end
     end
-  end
+
 
   # GET /posts/1
   # GET /posts/1.json

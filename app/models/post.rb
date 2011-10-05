@@ -3,5 +3,8 @@ class Post < ActiveRecord::Base
   belongs_to :user
 
    # validates :title, :presence => true
+   def self.search(search)
+     all(:conditions => ['title like ?',  "%#{search}%"] )
+   end
 
 end
