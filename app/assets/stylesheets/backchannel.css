@@ -1,0 +1,49 @@
+#banner {
+  background: #9c1;
+  padding: 10px;
+  border-bottom: 1px solid;
+  font: small-caps 40px/40px "Times New Roman", serif;
+  color: #162;
+  text-align: center;
+}
+
+  img {
+    float: left;
+  }
+
+
+#notice {
+  color: #000 !important;
+  border: 2px solid red;
+  padding: 1em;
+  margin-bottom: 2em;
+  background-color: #f0f0f0;
+  font: bold smaller sans-serif;
+}
+
+#columns {
+  background: #141;
+}
+
+  #main {
+    margin-left: 17em;
+    padding: 1em;
+    background: white;
+  }
+
+#side {
+    float: left;
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-bottom: 1em;
+    width: 6em;
+    background: #241;
+}
+
+#side a {
+    color: #afb;
+    font-size: small
+}
+
+
+

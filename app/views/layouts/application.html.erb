@@ -1,14 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BackChannelApp2</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+    <title>The Really Cool BackChannel Application</title>
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application" %>
+     <%= stylesheet_link_tag "backchannel", :media => "all" %>
+    <%= csrf_meta_tag %>
 </head>
 <body>
-
-<%= yield %>
-
+    <div id="banner">
+         <%= image_tag("wolf.gif") %>
+         <%= "BackChannel" %>
+         <%if (session[:user_id]) %>
+            <% @user =  User.find(session[:user_id])%>
+         <% end %>
+         <% if @user %>
+            <p><%= @user.username%> </p>
+        <% else %>
+            <p>anonymous</p>
+        <% end %>
+    </div>
+    <div id="columns">
+      <div id="side">
+        <a href="http://localhost:3000/">Home</a> <br/>
+        <% if @user %>
+            <%= link_to 'Logout', logout_path, method: :delete %>
+        <%else%>
+            <%= link_to 'Login', new_session_path %>
+        <% end %>
+        <%= link_to 'Users', users_path %>
+      </div>
+      <div id = "main">
+        <%= yield %>
+      </div>
+    </div>
 </body>
 </html>

@@ -1,9 +1,7 @@
 <h1>New session</h1>
 
 <div class = "session_form">
-  <% if flash[:alert] %>
-    <p id="Notice"><%= flash[:alert] %></p>
-  <% end %>
+ <p id="notice"><%= notice %></p>
 
   <%= form_tag do %>
     <fieldset>
