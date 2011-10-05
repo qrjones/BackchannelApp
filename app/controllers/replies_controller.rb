@@ -31,10 +31,12 @@ class RepliesController < ApplicationController
       logger.error "Accessed invalid post #{params[:post_id]}"
       redirect_to posts_path, :notice => 'Invalid post id'
     else
-      # @reply = @post.replies.build
        @reply = @user.replies.build
+       @reply.user_id = @user.id
+       @reply.post_id = @post.id
     end
     @post.save
+    @reply.save
     respond_to do |format|
       format.html { redirect_to edit_reply_path(@reply), notice: @post.title }
       format.json { render json: @reply }
@@ -67,6 +69,7 @@ class RepliesController < ApplicationController
   def update
     @reply = Reply.find(params[:id])
     @post = @reply.post
+    @reply.user_id = current_user.id
 
     respond_to do |format|
       if @reply.update_attributes(params[:reply])

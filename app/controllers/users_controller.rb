@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   # GET /users
   # GET /users.json
   def index
@@ -14,9 +15,10 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-
+    @numvotes=  0
+    @user.replies.each {|reply| @numvotes+= Vote.find_all_by_reply_id(reply.id).count  }
     respond_to do |format|
-      format.html # show.html.erb
+       format.html # show.html.erb
       format.json { render json: @user }
     end
   end

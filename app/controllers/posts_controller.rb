@@ -42,6 +42,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     @reply = @post.replies.build
+    @post.user_id =  current_user.id
 
     respond_to do |format|
       if @post.save

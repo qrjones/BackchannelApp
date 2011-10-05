@@ -22,7 +22,12 @@
 
 <p>
   <b>Number of votes cast by this user</b>
-  <%= @user.role %>
+  <%= @user.votes.count %>
+</p>
+
+<p>
+  <b>Number of votes cast for replies by this user</b>
+  <%=  @numvotes%>
 </p>
 
 
